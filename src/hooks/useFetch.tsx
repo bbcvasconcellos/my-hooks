@@ -12,7 +12,7 @@ export const useFetch = (url: string, options?: AxiosRequestConfig) => {
     .then(res => setData(res.data))
     .catch(err => {
       setError(err);
-      throw new Error('Failed data fetching...');
+      throw new Error('Data fetching failed...');
     })
     .finally(() => {
       setIsLoading(false)
