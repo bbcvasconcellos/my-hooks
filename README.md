@@ -28,4 +28,3 @@ This project is developed using the following stack:
 
 - useAuth: hook to obtain user access Authorization based on login credentials.
 - useFetch: hook to fetch data from an api.
-"# my-hooks" 
