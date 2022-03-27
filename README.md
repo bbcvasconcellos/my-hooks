@@ -2,7 +2,7 @@
 
 This project contains a collection of custom hooks. The purpose of this project
 is to ease and speed up development by avoiding writing frequently used code
-from scratch every time for `react` and `react-native`
+from scratch every time for `react`.
 
 ## Stack used
 
