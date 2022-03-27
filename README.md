@@ -27,4 +27,5 @@ This project is developed using the following stack:
 ### List of Hooks
 
 - useAuth: hook to obtain user access Authorization based on login credentials.
-- useFetch: hook to fetch data from an api.
+- useFetch: hook to fetch data from an api, useful to speedup writing fetch or axios function from scratch everytime an api call is needed.
+- useWidth: hook to responsively obtain the screen width, useful for responsive development.
