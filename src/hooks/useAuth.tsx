@@ -18,11 +18,12 @@ interface UserCredentials {
 }
 
 interface ApiRouteProps {
-  route: 'string';
+  apiRoute: 'string';
 }
 
 interface RouterAuthProps {
   router: (url: string) => void;
+  routeAddress: string;
 }
 
 interface AuthProps {
@@ -46,11 +47,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const signIn = async(
     { username, password }: User, 
-    { route }: ApiRouteProps,
-    { router }: RouterAuthProps
+    { apiRoute }: ApiRouteProps,
+    { router, routeAddress }: RouterAuthProps
   ) => {
     try {
-      const { data, status } = await axios.post(route, {
+      const { data, status } = await axios.post(apiRoute, {
         username,
         password
       })
@@ -64,7 +65,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
       if((user.sessionId && user.statusCode === 200) || user.loginAccepted) {
         localStorage.setItem('sessionId', JSON.stringify(user));
-        router('/');
+        router(`/${routeAddress}`);
       }
     } 
     catch(err) {
