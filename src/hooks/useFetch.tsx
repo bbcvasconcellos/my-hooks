@@ -6,7 +6,6 @@ const api = axios.create({
   baseURL: 'api:port',
 })
 
-
 export const useFetch = (url: string, options?: AxiosRequestConfig) => {
   const [data, setData] = useState<unknown | null>(null);
   const [error, setError] = useState<Error | null>(null);
