@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import axios, { AxiosRequestConfig } from "axios";
 
-// replace api:port with your baseURL
+
 const api = axios.create({
-  baseURL: 'api:port',
+  baseURL: 'api:port', // replace api:port with your baseURL
 })
 
-export const useFetch = (url: string, options?: AxiosRequestConfig) => {
-  const [data, setData] = useState<unknown | null>(null);
+export const useFetch = <T = unknown>(url: string, options?: AxiosRequestConfig) => {
+  const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
