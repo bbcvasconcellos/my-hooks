@@ -8,6 +8,7 @@ interface FileProps {
   file: FileNameProps;
   setFile: Dispatch<SetStateAction<FileNameProps>>;
   invalidFormat: boolean;
+  clear: () => void;
 }
 
 interface UseFileProps {
@@ -19,7 +20,7 @@ export const FileContext = createContext({} as FileProps)
 
 const FileProvider = ({ children, validator }: UseFileProps) => {
   const [file, setFile] = useState<FileNameProps>({ name: '' });
-  const [invalidFormat, setInvalidFormat] = useState(true);
+  const [invalidFormat, setInvalidFormat] = useState(false);
 
   let validateFile: RegExp | string = '';
 
@@ -32,13 +33,15 @@ const FileProvider = ({ children, validator }: UseFileProps) => {
   useEffect(() => {
     if(!validateFile || !file || !file?.name?.match(validateFile)) {
       setInvalidFormat(true)
-    } else {
-      setInvalidFormat(false)
-    }
+    } 
   }, [file, validateFile]);
 
+  const clear = () => {
+    setFile({ name: '' });
+  }
+
   return (
-    <FileContext.Provider value={{ file, setFile, invalidFormat }}>
+    <FileContext.Provider value={{ file, setFile, invalidFormat, clear }}>
       { children }
     </FileContext.Provider>
   )
