@@ -29,5 +29,5 @@ This project is developed using the following stack:
 - _useAuth:_ hook to obtain user access Authorization based on login credentials. Intended to be used to determine which routes the user has access to.
 - _useFetch:_ hook to fetch data from an api, useful to speedup writing fetch or axios function from scratch everytime an api call is needed.
 - _useWidth:_ hook to responsively obtain the screen width, useful for responsive development.
-- _useFile:_ hook to save files which can be use for further validations prior to submission to the backend. 
-<bold>e.g.<bold/> I use it in my work in to save an user's file, and to validate later on whether its format is accepted, or if the file is empty; in those cases it returns an error(boolean) which can be treated by the developer the way he/she wants to.
+- _useFile:_ hook to save files which can be use for further validations prior to submission to the backend.  
+**e.g.** I use it in my work in to save an user's file, and to validate later on whether its format is accepted, or if the file is empty; in those cases it returns an error(boolean) which can be treated by the developer the way he/she wants to.
