@@ -16,18 +16,29 @@ export const useFetch = <T = unknown>(
   });
 
   useEffect(() => {
+    const cancelToken = axios.CancelToken.source();
     const fetchData = async () => {
-      await api(path, options)
+      await api(path, options, { cancelToken: cancelToken.token })
         .then((res) => setData(res.data))
         .catch((err) => {
-          setError(err);
-          console.log("Data fetching failed...");
+          if(axios.isCancel(err)) {
+            setError(err)
+            console.log("Request cancelled!")
+          } else {
+            setError(err);
+            console.log("Data fetching failed...", err);
+          }
         })
         .finally(() => {
           setIsLoading(false);
         });
     };
     fetchData();
+
+    //cleanup
+    return () => {
+      cancelToken.cancel();
+    }
   }, [path, options, api]);
 
   return { data, error, isLoading };
